@@ -1,0 +1,9 @@
+commands.txt
+challenges.txt
+db.sqlite3
+migrations
+__pycache__
+*.pyc
+*.env
+*/static/base/pix
+venv
