@@ -1,0 +1,126 @@
+/* Home Page */
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.button_grp_1{
+    font-size: 40px;
+    background-color: #FF8200;
+    padding: 0px 30px;
+}
+/* Note: the image here is loaded relative to the position of the css file else use an absolute link */
+.background1{
+    background-color: #212529;
+    background-image: url("../img/bk_image.png");
+    background-blend-mode: overlay;
+}
+.cards1{
+    width: 350px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.carousal1{
+    padding: 50px;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+.dark_gray_2{
+    background-color: #292929;
+    color: #ffffff;
+}
+.nav_grp_footer{
+  color: #FF8200;
+}
+.icon{
+    margin: 0px 5px 0px 5px;
+}
+
+/* Login page */
+#auth_1{
+    max-width: 500px; 
+    background-color: rgba(22, 21, 21, 0.7); 
+    color: #ffffff;
+}
+#auth_image{
+    max-width: 60px;
+    height: 60px;
+}
+
+/* Dashboards */
+.list{
+    max-height: 60vh; 
+    overflow-y: auto;
+}
+.top_half{
+    border: 1px; 
+    border-bottom-style: dashed; 
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px;
+}
+.bottom_half{
+    border-bottom-left-radius: 5px; 
+    border-bottom-right-radius: 5px;
+}
+.bottom_half_inner{
+    margin-right: 10px;
+}
+.settings{
+    font-size: 20px;
+    background-color: black;
+    color: white;
+}
+.left_nav{
+    margin: 2px;
+    font-size: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 3px 0px 3px 5px;
+    color: white;
+}
+.left_nav:hover{
+    background-color: rgba(73, 73, 73, 0.24);
+}
+.left_nav_icon{
+    font-size: 20px;
+    color: chartreuse;
+    margin: 2px;
+}
+.button_icon{
+    font-size: 20px;
+}
+.icon2{
+    margin: 0px 5px 0px 5px;
+    text-decoration: none;
+}
+
+/* Batch summary */
+.summary{
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+.summary_label{
+    color: #A5C324; 
+    font-size: 20px; 
+    margin-bottom: 5px;
+}
+.summary_inner_1{
+    border-style: solid; 
+    border-width: 1px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    border-color: #A5C324;
+}
+.summary_inner_0{
+    background-color: rgb(15, 15, 15); 
+    border-radius: 10px; 
+    margin: 10px 0px 10px 0px;
+}
+
+/* Modals */
+#modal_1{
+    max-width: 500px; 
+    background-color: rgba(17, 17, 17, 0.932); 
+    color: #ffffff;
+}

@@ -1,0 +1,100 @@
+{% extends 'base/main.html' %}
+
+{% block title %}
+<title>Sales</title>
+<style>
+    .left_nav{
+        margin: 2px;
+        font-size: 25px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: black;
+        padding: 3px 0px 3px 5px;
+        color: white;
+    }
+    .left_nav:hover{
+        background-color: rgba(128, 255, 0, 0.24);
+    }
+    .left_nav_icon{
+        font-size: 20px;
+        color: chartreuse;
+        margin: 2px;
+    }
+    .button_icon{
+        font-size: 20px;
+    }
+    #add_batch{
+        font-size: 20px;
+        background-color: #FF8200;
+        border-color: #FF8200;
+        margin: 10px;
+    }
+    #add_batch:hover{
+        background-color: #e6f702;
+        border-color: #e6f702;
+    }
+    .item_icons{
+        color: black;
+    }
+</style>
+{% endblock title %}
+
+{% block main %}
+
+    <div class="containter-fluid text-bg-dark" style="height: 100vh; overflow: auto;">
+
+    {% include 'base/top_nav_bar.html' %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'base/left_nav_bar.html' %}
+        </div>
+        
+        <div class="col-md-9">
+            <div class="d-flex justify-content-between p-3 p-sm-0">
+                <p style="margin-top: auto; margin-bottom: auto; font-size: 20px;"><span style="color: #FF8200; text-transform: uppercase;">Total Sales:</span> N{{ worth }}</p>
+                <div>
+                    <a href="#"><button class="btn btn-warning" id="add_batch"><i class="fas fa-plus button_icon"></i> Record Sale</button></a>
+                    <a href="#"><button class="btn btn-outline-warning" id="customers" style="font-size: 20px; border-color: #ffffff; margin: 10px; color: #ffffff;"> Customers</button></a>
+                </div>                
+            </div>
+            <div style="background-color: rgb(0, 0, 0); padding: 10px; margin-right: 10px; border-radius: 10px;">
+                <form class="d-flex m-3">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search by Name, Date ...">
+                    <button class="btn btn-secondary my-2 my-sm-0 me-2" type="submit">Search</button>
+                </form>
+        
+                <p class="" style="font-size: 20px; margin: 2px 0px 0px 0px;">Sales Count: {{ count }}</p>
+        
+                <hr style="margin: 5px 0px 2px 0px;">
+        
+                <div>
+                    {% for item in items %}
+                    <div class="my-1">
+                        <a href="#" class="text-decoration-none" style="color: black;">
+                            <p class="px-2" style="background-color: #949494; margin: 0px; border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px; border-top-right-radius: 3px; border-top-left-radius: 3px;"><strong>{{ item.name }}</strong></p>
+                            <div class="d-flex justify-content-between px-2" style="background-color: #949494; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
+                                <div class="d-flex ">
+                                    <div class="me-4" >{{ item.qty }} {{ item.measure }}</div>
+                                    <div class="me-4" >N{{ item.price }}</div>
+                                    <div class="me-4" >{{ item.created_at }}</div>
+                                </div>
+
+                                <div>
+                                    <a href="#" class="fas fa-eye mx-3 item_icons"></a>  
+                                    <a href="{% url 'update-item-url' item.id %}" class="fa fa-pencil-square-o mx-3 item_icons" ></a>  
+                                    <a href="{% url 'delete-item-url' item.id %}" class="item_icons"><i class="fas fa-trash-alt mx-3"></i></a>
+                                    <a href="#" class="mx-3 fa fa-mail-forward text-decoration-none item_icons"></a> 
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+

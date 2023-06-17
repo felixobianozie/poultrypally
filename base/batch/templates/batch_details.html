@@ -1,0 +1,131 @@
+<div id="batch_details" class="w3-col m4 l3 w3-container w3-padding-16 w3-black w3-section summary w3-animate-right w3-hide-small w3-show-medium w3-show-large">
+    <div class="">
+        <div class="w3-cell-row">
+            <div class="w3-cell">
+                <div class="w3-orange w3-hover-gray w3-center w3-round" onclick="hideDetails()" style="padding: 2px;">
+                    <span><strong>&times;</strong></span>
+                </div>
+            </div>
+            <div class="w3-cell">
+                <div class="w3-text-lime w3-center w3-large"><strong>BATCH DETAILS</strong></div>
+                <div class="w3-text-orange w3-center">{{ batch.name }}</div>
+            </div>
+        </div>
+
+        <div class="w3-container w3-padding-16 w3-round summary_inner_0">
+            <div class="summary_label">Count</div>
+            <div class="summary_inner_1">
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Overall Total:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">{{ batch.livestock.qty }} bird(s)</div>
+                    </div>
+                </div>
+                
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Mortality:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">{{ mortality_details.count }} bird(s)</div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:4%; background-color: #880000;">
+                    4
+                    </div>
+                    <div class="progress-bar" style="width:96%; background-color: #3a3a3a;">
+                    96
+                    </div>
+                </div>
+
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Livestock Sold:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">{{ sale_details.count }} bird(s)</div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ batch.size }}%; background-color: #586811;">
+                        {{ batch.size }}
+                    </div>
+                    <div class="progress-bar" style="width:70%; background-color: #3a3a3a;">
+                        45 
+                    </div>
+                </div>
+
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Available Livestock:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">{{ batch.size }} bird(s)</div>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ batch.size }}%; background-color: #586811;">
+                        {{ batch.size }}
+                    </div>
+                    <div class="progress-bar" style="width:70%; background-color: #3a3a3a;">
+                        45 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-container w3-padding-16 w3-round summary_inner_0">
+            <div class="summary_label">Sales</div>
+            <div class="summary_inner_1">
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Selling Price:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">N{{ sale_details.selling_price|floatformat:"0" }}</div>
+                    </div>
+                </div>
+
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Sales Worth:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">N{{ sale_details.worth|floatformat:"0" }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-container w3-padding-16 w3-round summary_inner_0">
+            <div class="summary_label">Profit</div>
+            <div class="summary_inner_1">
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Current Profit:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        {% if sale_details.profit|floatformat:"0" > 0 %} <div class="w3-right">N{{ sale_details.selling_price|floatformat:"0" }}</div> {% else %} <div class="w3-right">None yet</div> {% endif %}
+                    </div>
+                </div>
+
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Target Profit:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        {% if batch.target_profit > 0 %} <div class="w3-right">N{{ batch.target_profit }}</div> {% else %} <div class="w3-right">None Specified</div> {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-container w3-padding-16 w3-round summary_inner_0">
+            <div class="summary_label">Cost</div>
+            <div class="summary_inner_1">
+
+                <div class="w3-cell-row">
+                    <div class="w3-cell"><strong>Orig. Livestock Cost:</strong></div> 
+                    <div class="w3-cell w3-cell-middle">
+                        <div class="w3-right">N{{ batch.livestock.price|floatformat:"0" }}</div>
+                    </div>
+                </div>
+
+                <div class="containter-fluid d-flex justify-content-between">
+                    <div><strong>Curr. Cost Per Bird:</strong> </div> 
+                    <div>N{{ cost_per_bird|floatformat:"0" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Batches</title>
+{% endblock title %}
+
+{% block main %}
+
+    <div class="w3-dark-gray" style="min-height: 100vh; overflow: auto;">
+
+    {% include 'top_nav_bar.html' %}
+
+    <div class="w3-row">
+        <div class="w3-col m4 l3">
+            {% include 'left_nav_bar.html' %}
+        </div>
+        
+        <div class="w3-col m8 l9">
+            <div class="w3-cell-row w3-container w3-padding-16">
+                <div class="w3-cell w3-cell-middle">
+                    <span class="w3-xlarge w3-text-orange"><strong>ALL BATCHES</strong></span> 
+                </div>
+                <div class="w3-cell w3-cell-middle w3-right">
+                    <div>
+                        <a href="{% url 'create-batch-url' %}" class="w3-button w3-orange w3-round-xlarge w3-large"><i class="fas fa-plus button_icon"></i> Add Batch</button></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w3-container">
+                <div class="w3-black w3-container w3-round-large w3-padding-16">
+                    <form class="" style="width: 100%;" action="{% url 'batches-url' %}">
+                        <input class="w3-round-large" type="text" name="search" placeholder="Search by Name, Date ..." style="width: 79%;">
+                        <button class="w3-right w3-round-large w3-hover-orange" type="submit" style="width: 20%;">Search</button>
+                    </form>
+            
+                    <div style="padding: 8px 0px 8px 0px;">Batch Count: {{ count }}</div>
+            
+                    <hr style="margin: 0px 0px 5px 0px;">
+            
+                    <div class="list">
+                        {% for batch in batches %}
+                        <div>
+                            <div style="padding-bottom: 8px;">
+                                <a href="{% url 'batch-url' batch.id %}" style="text-decoration: none;">
+                                <div class="w3-gray w3-container top_half w3-hover-orange"><strong>{{ batch.name }}</strong></div>
+                                </a>
+                                <div class="w3-cell-row w3-container w3-gray bottom_half">
+                                    <div class="w3-cell  w3-cell-middle">
+                                        {{ batch.size }} Bird(s)
+                                    </div>
+                                    <div class="w3-cell  w3-cell-middle">N{{ batch.cost }}</div>                              
+                                    <div class="w3-cell  w3-cell-middle w3-hide-small">
+                                       {{ batch.created_at }}
+                                    </div>
+                                    <div class="w3-cell w3-cell-middle">
+                                        <div class="w3-cell-row">
+                                            <div class="w3-cell"><a href="{% url 'batch-url' batch.id %}" class="fas fa-eye icon2">v</a></div>
+                                            <div class="w3-cell"><a href="{% url 'update-batch-url' batch.id %}" class="fa fa-pencil-square-o icon2">e</a></div>
+                                            <div class="w3-cell"><a a href="#" onclick="document.getElementById('{{ batch.id }}').style.display='block'" class="fas fa-trash-alt icon2">d</a></div>
+                                            <!-- Delete Prompter Start-->
+                                            {% include 'batches_delete_modal.html' %}
+                                            <!-- Delete Prompter Finish-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock main %}

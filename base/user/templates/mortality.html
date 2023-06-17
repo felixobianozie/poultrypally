@@ -1,0 +1,147 @@
+{% extends 'base/main.html' %}
+
+{% block title %}
+<title>Mortality</title>
+<style>
+    .left_nav{
+        margin: 2px;
+        font-size: 25px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: black;
+        padding: 3px 0px 3px 5px;
+        color: white;
+    }
+    .left_nav:hover{
+        background-color: rgba(128, 255, 0, 0.24);
+    }
+    .left_nav_icon{
+        font-size: 20px;
+        color: chartreuse;
+        margin: 2px;
+    }
+    .button_icon{
+        font-size: 20px;
+    }
+    #add_batch{
+        font-size: 20px;
+        background-color: #FF8200;
+        border-color: #FF8200;
+        margin: 10px;
+    }
+    #add_batch:hover{
+        background-color: #e6f702;
+        border-color: #e6f702;
+    }
+    .item_icons{
+        color: black;
+    }
+</style>
+
+{% endblock title %}
+
+{% block main %}
+
+    <div class="containter-fluid text-bg-dark" style="height: 100vh; overflow: auto;">
+
+    {% include 'base/top_nav_bar.html' %}
+
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'base/left_nav_bar.html' %}
+        </div>
+        
+        <div class="col-md-9">
+            <div class="d-flex justify-content-between p-3 p-sm-0">
+                <p style="margin-top: auto; margin-bottom: auto; font-size: 20px;"><span style="color: #FF8200; text-transform: uppercase;">Mortality Cost:</span> N{{ worth }}</p>
+                <a href="#"><button class="btn btn-warning" id="add_batch"><i class="fas fa-plus button_icon"></i> Record Death</button></a>
+            </div>
+            <div style="background-color: rgb(0, 0, 0); padding: 10px; margin-right: 10px; border-radius: 10px;">
+                <form class="d-flex m-3">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search by Name, Date ...">
+                    <button class="btn btn-secondary my-2 my-sm-0 me-2" type="submit">Search</button>
+                </form>
+        
+                <p class="" style="font-size: 20px; margin: 2px 0px 0px 0px;">Death Count: {{ count }}</p>
+        
+                <hr style="margin: 5px 0px 2px 0px;">
+        
+                <div>
+                    {% for mort in mortalities %}
+                    <div class="my-1">
+                        <a href="#" class="text-decoration-none" style="color: black;">
+                            <p class="px-2" style="background-color: #949494; margin: 0px; border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px; border-top-right-radius: 3px; border-top-left-radius: 3px;"><strong>{{ item.name }}</strong></p>
+                            <div class="clearfix justify-content-between px-2" style="background-color: #949494; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;">
+                                <div class="">
+                                    <div class="float-start" style="min-width: 250px;">
+                                        <span class="me-4" >{{ mort.livestock.batch.name }}</span>
+                                        <span class="me-4" >{{ mort.qty }}</span>
+                                        <span class="me-4" >{{ mort.created_at }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="float-end" style="min-width: 250px;">
+                                    <a href="#" class="fas fa-eye mx-3 item_icons"></a>  
+                                    <a href="{% url 'update-mortality-url' mort.id %}" class="fa fa-pencil-square-o mx-3 item_icons" ></a>  
+                                    <a href="{% url 'delete-mortality-url' mort.id %}" class="item_icons text-decoration-none fas fa-trash-alt mx-3"></a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div class="mort-container">
+    <div class="mort-children">
+        {% include 'left_nav_bar.html' %}
+    </div>
+
+    <div class="mort-children">
+        <h1 style="display: inline;">Mortalities</h1>
+        <form action="{% url 'create-mortality-url' %}" method="GET" style="display: inline;">
+            <input type="submit" value="record mortality" style="font-size: 25px; float: right;">
+        </form>
+        <p>Total Worth: {{ worth }}</p>
+        <p></p>
+        <form action="">
+            <input type="text" name="search" style="min-width: 100%;" placeholder="Search batches by Name, Date ...">
+        </form>
+        <h3>Mortality Count: {{ count }}</h3>
+        <div>
+            {% for mort in mortalities %}
+            <div><a href="">{{ mort.livestock.batch.name }}<br>
+                    {{ mort.qty }} - N{{ mort.cost }} - {{ mort.created_at }} - 
+                    <a href="">view</a> | 
+                    <a href="{% url 'update-mortality-url' mort.id %}">edit</a> | 
+                    <a href="{% url 'delete-mortality-url' mort.id %}">delete</a>
+                </a>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div> -->

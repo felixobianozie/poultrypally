@@ -1,0 +1,19 @@
+{% load static %}
+<div class="w3-cell-row w3-container w3-black">
+    <div class="w3-cell w3-cell-middle">
+        <a href="\" class="w3-button"><img src="{% static 'base/img/farmpally_logo.png' %}" alt="FarmPally Logo" style="max-width:40px;">PoultryPally</a>
+    </div>
+    <div class="w3-cell w3-cell-middle w3-right" >
+        <div class="w3-cell w3-hide-medium w3-hide-large" onclick="showMobileMenu()">|m||</div>
+        <div class="w3-cell w3-hide-small">
+            <span class="fas fa-toggle-on w3-padding"></span>
+            <span class="fas fa-bell w3-padding"></span>
+            <span class="fa fa-gear w3-padding"></span>
+        </div>
+        <div class="w3-cell">
+            <img src="{{ user.pix.url }}" alt="Profile Photo" class="w3-margin w3-circle" style="max-width:40px;">
+        </div>
+    </div>
+
+</div>
+

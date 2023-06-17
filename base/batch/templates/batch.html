@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Batch</title>
+{% endblock title %}
+
+{% block main %}
+
+    <div class="w3-dark-gray" style="min-height: 100vh; overflow: auto;">
+
+    {% include 'top_nav_bar.html' %}
+
+    <!-- Batch details mobile-->
+    {% include 'batch_details_mobile.html' %}
+
+    <div class="w3-row">
+
+        <div id="left_nav_bar" class="w3-col m2 l3">
+            {% include 'left_nav_bar.html' %}
+        </div>
+
+        <div id="main" class="w3-col m6 l6">
+            <!-- Batch details display controller -->
+            <div class="w3-right">
+                <div id="details_btn" class="w3-black w3-container summary w3-button w3-show-small w3-hide-medium w3-hide-large" style="font-size: 15px; min-width: 150px;" onclick="showDetails()">
+                    <span class="fas fa-angle-double-left w3-text-orange w3-animate-fading" style="font-size: 15px;">kk</span> DETAILS
+                </div>    
+            </div>
+
+            <div class="w3-cell-row w3-container w3-padding-16">
+                <div class="w3-cell w3-cell-middle">
+                    <div class="w3-xlarge"><a href="{% url 'batches-url' %}" class="fas fa-arrow-left " style="text-decoration: none;">
+                        </a> <span class="w3-text-orange" style="text-transform: uppercase;">{{ batch.livestock.type }}:</span>
+                        <span class="w3-hide-small"> {{ batch.name }}</span>
+                        <!-- For mobile -->
+                        <div class="w3-xlarge w3-hide-large w3-hide-medium">{{ batch.name }}</div>
+                    </div>
+                </div>
+                <div class="w3-cell w3-cell-middle w3-right">
+                    <div>
+                        <form action="{% url 'create-item-url' %}">
+                            <input type="hidden" name="batch_id" value="{{ batch.id }}">
+                            <button type="submit" class="w3-button w3-orange w3-round-xlarge w3-large"><i class="fas fa-plus button_icon"></i> Add Item</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w3-container">
+                <div class="w3-black w3-container w3-round-large w3-padding-16">
+                    <form class="" style="width: 100%;" action="#">
+                        <input class="w3-round-large" type="text" name="search" placeholder="Search by Name, Date ..." style="width: 79%;">
+                        <button class="w3-right w3-round-large w3-hover-orange" type="submit" style="width: 20%;">Search</button>
+                    </form>
+
+                    <div style="padding: 8px 0px 8px 0px;">Items Count: {{ items_count }}</div>
+        
+                    <hr style="margin: 0px 0px 5px 0px;">
+        
+                    <div class="list">
+                        {% for item in items %}
+                        <div>
+                            <div style="padding-bottom: 8px;">
+                                <a href="#" style="text-decoration: none;">
+                                <div class="w3-gray w3-container top_half w3-hover-orange"><strong>{{ item.name }}</strong></div>
+                                </a>
+                                <div class="w3-cell-row w3-container w3-gray bottom_half">
+                                    <div class="w3-cell  w3-cell-middle">
+                                        {{ item.qty }} {{ item.measure }}
+                                    </div>
+                                    <div class="w3-cell  w3-cell-middle">N{{ item.price }}</div>                              
+                                    <div class="w3-cell  w3-cell-middle w3-hide-small">
+                                    {{ item.created_at }}
+                                    </div>
+                                    <div class="w3-cell w3-cell-middle">
+                                        <div class="w3-cell-row">
+                                            <div class="w3-cell"><a href="#" class="fas fa-eye icon2">v</a></div>
+                                            <div class="w3-cell"><a href="{% url 'update-item-url' item.id %}" class="fa fa-pencil-square-o icon2">e</a></div>
+                                            <div class="w3-cell"><a href="#" onclick="document.getElementById('{{ item.id }}').style.display='block'" class="fas fa-trash-alt icon2">d</a></div>
+                                            <!-- Delete Prompter Start-->
+                                            {% include 'item_delete_modal.html' %}
+                                            <!-- Delete Prompter Finish-->
+                                            <div class="w3-cell"><a href="#" class="fas fa-reply icon2">f</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'batch_details.html' %}
+
+    </div>
+    </div>
+{% endblock main %}

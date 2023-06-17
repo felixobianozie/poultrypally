@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block main %}
+<div class="background1 w3-padding w3-padding-64" style="min-height: 100vh;">
+    <div class="center w3-round-large w3-padding w3-padding-32" id="auth_1">
+        <div >
+            <div class="w3-panel w3-center">
+                <img src="{% static 'base/img/person_circle.png' %}" alt="Person Circle" id="auth_image">
+            </div>
+            <div class="w3-container">
+                <form action="{% url 'login-url' %}" method='POST' style="width: 100%;">
+                    {% csrf_token %}
+                    
+                    {{ form }}
+                
+                    <p class="w3-right"><a href="#" class="w3-hover-text-orange" style="text-decoration: none;">Forgot password?</a></p>
+                    <br>
+                    <div class="w3-cell-row">
+                        <div class="w3-cell w3-center">
+                            <button type="submit" class="w3-button w3-orange w3-round-xlarge" style="width: 100px;">Login</button>
+                        </div>
+                        <div class="w3-cell w3-center">
+                            <a href="{% url 'home-url' %}" class="w3-button w3-text-orange w3-border w3-border-orange w3-round-xlarge" style="width: 100px;">Cancel</a>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="w3-center">Dont have an account? <a href="{% url 'signup-url' %}" class="w3-text-lime w3-hover-text-orange" style="text-decoration: none;">Sign Up</a></p>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+{% endblock main %}

@@ -1,0 +1,45 @@
+<div id="div{{ item.id }}" class="w3-modal">
+    <div class="w3-modal-content w3-transparent">
+        <div class="center w3-round-large w3-padding w3-padding-32" id="modal_1">
+            <div class="w3-center w3-xlarge w3-text-white">
+                Assign Item to Batch?<br><span class="w3-text-lime">{{ item.name }}</span>
+            </div>
+            <br>
+            <div class="w3-container">
+                <div  style="width: 100%;">
+                    <form action="{% url 'forward-item-url' item.id %}" method="POST" id="form{{ item.id }}">
+                        {% csrf_token %}
+                        <input onclick="isChecked('qty{{ item.id }}', 'all{{ item.id }}', 'few{{ item.id }}')" type="radio" id="all{{ item.id }}" name="select" value="all" checked>
+                        <label onclick="isChecked('qty{{ item.id }}', 'all{{ item.id }}', 'few{{ item.id }}')" for="all{{ item.id }}">All</label><br>
+                        <input onclick="isChecked('qty{{ item.id }}', 'all{{ item.id }}', 'few{{ item.id }}')" type="radio" id="few{{ item.id }}" name="select" value="some" >
+                        <label onclick="isChecked('qty{{ item.id }}', 'all{{ item.id }}', 'few{{ item.id }}')" for="few{{ item.id }}">Some</label><br>
+                        <br>
+
+                        <div id="qty{{ item.id }}" class="w3-hide">
+                            <label for="qty">Quantity:</label>
+                            <input class="w3-input w3-round" type="number" name="qty" id="qty" placeholder="{{ item.measure }}">
+                            <br>
+                        </div>
+
+                        <label for="batch">Batch Name:</label>
+                        <select name="batch" id="batch"  class="w3-input w3-round">
+                        {% for batch in batches %}
+                        <option value="{{batch.id}}">{{batch.name}}</option>
+                        {% endfor %}
+                        </select>
+                    </form>
+                    <br>
+                    <div class="w3-cell-row">
+                        <div class="w3-cell w3-center">
+                            <button type="submit" form="form{{ item.id }}" class="w3-button w3-orange w3-round-xlarge" style="width: 100px;">Assign</button>
+                        </div>
+                
+                        <div class="w3-cell w3-center">
+                            <button onclick="document.getElementById('div'+'{{ item.id }}').style.display='none'" class="w3-button w3-text-orange w3-border w3-border-orange w3-round-xlarge" style="width: 100px;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,231 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>PoultryPally Home</title>
+{% endblock title %} 
+
+{% block main %}
+
+<div class="w3-dark-gray">
+    <section class="background1" style="min-height: 100vh;">
+        <nav class="w3-container w3-cell-row w3-card-4">
+          <div class="w3-cell">
+            <a class="w3-button" href="/">
+              <img class="" src="{% static 'base/img/farmpally_logo.png' %}" alt="FarmPally Logo" style="width:60px;"></a>
+              <a class="w3-button w3-xlarge" href="/">PoultryPally</a>
+          </div>
+          <div class="w3-cell w3-hide-large w3-hide-small w3-xlarge" onclick="showTabMenu()"><i class="fa fa-navicon">|t||</i></div>
+          <div class="w3-cell w3-hide-medium w3-hide-large" onclick="showMobileMenu()">|m||</div>
+          <div class="w3-cell w3-hide-medium w3-hide-small">
+            <a class="w3-button w3-large" href="#about">About</a>
+            <a class="w3-button w3-large" href="#features">Features</a>
+            <a class="w3-button w3-large" href="#reviews">Reviews</a>
+            <a class="w3-button w3-large" href="#">Tutorials</a>
+            <a class="w3-button w3-large" href="#contact">Contact</a>
+          </div>
+          <div class="w3-cell w3-hide-small">
+            {% if user.is_authenticated %}
+            <a class="w3-button w3-orange w3-round-large w3-xlarge" href="{% url 'logout-url' %}">Logout</a>
+            {% else %}
+            <a class="w3-button w3-orange w3-round-large w3-xlarge" href="{% url 'login-url' %}">Login</a>
+            {% endif %}
+          </div>
+        </nav>
+        <!-- Tablet screen top navigation -->
+        <div id="tab_menu" class="w3-center w3-hide w3-card-4 w3-hide-small w3-hide-large w3-animate-right">
+          <a class="w3-button w3-large" href="#about">About</a>
+          <a class="w3-button w3-large" href="#features">Features</a>
+          <a class="w3-button w3-large" href="#reviews">Reviews</a>
+          <a class="w3-button w3-large" href="#">Tutorials</a>
+          <a class="w3-button w3-large" href="#contact">Contact</a>
+        </div>
+        <!-- Mobile screen top navigation -->
+        <div id="mobile_menu" class="w3-center w3-hide w3-hide-medium w3-hide-large w3-animate-right">
+          <a href="#about"><div class="w3-button w3-large w3-card-4 w3-round-large" style="width: 90%;">About</div></a>
+          <a href="#about"><div class="w3-button w3-large w3-card-4 w3-round-large" style="width: 90%;">Features</div></a>
+          <a href="#about"><div class="w3-button w3-large w3-card-4 w3-round-large" style="width: 90%;">Reviews</div></a>
+          <a href="#about"><div class="w3-button w3-large w3-card-4 w3-round-large" style="width: 90%;">Tutorials</div></a>
+          <a href="#about"><div class="w3-button w3-large w3-card-4 w3-round-large" style="width: 90%;">Contact</div></a>
+          {% if user.is_authenticated %}
+          <div><a class="w3-button w3-orange w3-round-large" href="{% url 'logout-url' %}">Logout</a></div>
+          {% else %}
+          <div><a class="w3-button w3-orange w3-round-large" href="{% url 'login-url' %}">Login</a></div>
+          {% endif %}
+        </div>
+        <div class="w3-center w3-padding-64 center" >
+          <div class="w3-xxxlarge center" style="max-width: 800px;">A digital assistant with a complete set of features for seamless poultry livestock keeping</div>
+          <div class="w3-panel">
+            {% if user.is_authenticated %}
+            <a class="w3-button w3-orange w3-round-large w3-xlarge" href="{% url 'batches-url' %}">Proceed to Dashboard</a>
+            {% else %}
+            <a class="w3-button w3-orange w3-round-large w3-xlarge" href="{% url 'signup-url' %}">Get Started Free</a>
+            <p class="w3-xlarge">Already have an account? <a class="w3-hover-text-orange" style="text-decoration: none;" href="{% url 'login-url' %}"><strong>Login</strong></a></p>
+            {% endif %}
+          </div>
+          <div class="w3-xxlarge w3-text-lime">Everything you need for poultry farm management</div>
+        </div>
+    </section>
+
+    <hr id="about">
+
+    <section class="w3-row">
+      <div class="w3-col m3 l3 w3-center w3-padding">
+        <img class="w3-section" src="{% static 'base/img/red_questionmark.png' %}" alt="About Symbol" style="max-width: 200px;">
+        <div>
+          <a class="w3-button w3-lime w3-round-large w3-section" href="{% url 'signup-url' %}">Sign Up -></a>
+        </div>
+      </div>
+      <div class="w3-col m9 l9 w3-xlarge w3-padding">
+        <p><span class="w3-text-lime">PoultryPally</span> is a digital assistant with a complete set of tools for 
+          small & medium scale poultry farm management.</p>
+        <p>It is a free digital product for the everyday farmer.</p>
+        <p>It is strictly designed with simplicity in mind to help the next 
+          door farmer keep track of everything about his livestock and crops. 
+          This product has the simplest learning curve and is your best choice. </p>
+        <p>PoultryPally is constantly improving with more features being added on a regular basis.</p>
+        <p class="w3-text-orange">Get your farm tech enabled today for free!</p>
+      </div>
+    </section>
+
+    <hr id="features">
+
+    <section>
+      <div class="w3-center">
+        <h1 class="w3-xxlarge w3-padding-24">How <span class="w3-text-orange">FarmPally</span> can help you</h1>
+      </div>
+
+      <div class="w3-row w3-container" style="margin-bottom: 30px;">
+        <div class="w3-container w3-col m6 l4 w3-padding-16">
+          <div class="w3-card-4 w3-dark-gray w3-large w3-round-xlarge w3-padding-large cards1">
+            <header class=""><b>Organize</b></header>
+            <p class="" >Arrange farm records in manageable units for 
+              very easy administration.</p>
+            <footer class="w3-text-orange w3-hover-text-gray">Get Started-></footer>
+          </div>
+        </div>
+        <div class="w3-container w3-col m6 l4 w3-padding-16">
+          <div class="w3-card-4 w3-dark-gray w3-large w3-round-xlarge w3-padding-large cards1">
+            <header class=""><b>Inventory</b></header>
+            <p class="" >Intelligently keeps track of all items brought 
+              into farm and every item expended on any batch of livestock.</p>
+            <footer class="w3-text-orange w3-hover-text-gray">Get Started-></footer>
+          </div>
+        </div>
+        <div class="w3-container w3-col m6 l4 w3-padding-16">
+          <div class="w3-card-4 w3-dark-gray w3-large w3-round-xlarge w3-padding-large cards1">
+            <header class=""><b>Cost</b></header>
+            <p class="" >Tracks production cost associated with farm and every batch of livestock.</p>
+            <footer class="w3-text-orange w3-hover-text-gray">Get Started-></footer>
+          </div>
+        </div>
+        <div class="w3-container w3-col m6 l4 w3-padding-16">
+          <div class="w3-card-4 w3-dark-gray w3-large w3-round-xlarge w3-padding-large cards1">
+            <header class=""><b>Sales</b></header>
+            <p class="" >Keep sales records, automatically reconciles revenue with all other farm finance KPIs.</p>
+            <footer class="w3-text-orange w3-hover-text-gray">Get Started-></footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w3-white" id="reviews">
+      <div class="w3-xxlarge w3-padding-16 w3-center"><strong><b>Currently in use by <span class="w3-text-orange">403+ </span>farmers</b></strong></div>
+      <div class="w3-xlarge w3-center w3-padding-16">Trending user reviews:</div>
+    <!-- Carousel -->
+    <div class="w3-content w3-display-container carousal1" style="max-width:800px">
+      <div class="mySlides w3-display-container w3-xlarge w3-card-4 w3-animate-right">
+        <div class="w3-padding-large">
+          <p class="w3-lime w3-center" style="font-size:100px; margin: 0px; padding: 0;">&#10077;</p>
+          <p style="text-align: justify;">Every other tool seemed too complex until I came across FarmPally. It provided 
+            just what I needed and more.</p>
+          <p>---Efe Oghene---</p>
+        </div>
+      </div>
+      <div class="mySlides w3-display-container w3-xlarge w3-card-4 w3-animate-right">
+        <div class="w3-padding-large">
+          <p class="w3-lime w3-center" style="font-size:100px; margin: 0px; padding: 0;">&#10077;</p>
+          <p style="text-align: justify;">Whatever is here is the best 
+            just what I needed and more.</p>
+          <p>---Tina Plat---</p>
+        </div>
+      </div>
+      <button class="w3-button w3-display-left w3-dark-gray w3-circle" onclick="plusDivs(-1)">&#10094;</button>
+      <button class="w3-button w3-display-right w3-dark-gray w3-circle" onclick="plusDivs(1)">&#10095;</button>
+    </div>
+    </section >
+
+    <section class="w3-dark-gray w3-padding-64 w3-xlarge w3-center" id="contact">
+      <div class="w3-card-4 w3-round-xlarge w3-round-large w3-padding-large w3-center center dark_gray_2" style="max-width: 500px;">
+          <p class="card-text">Got any questions?</p>
+          <p class="card-text">Need technical help?</p>
+          <p class="card-text">Want any special feature?</p>
+      </div>
+      <br>
+      <div>
+        <p class=""><strong>Our team is always on call to help you</strong></p>
+        <a href="#" class="w3-orange">Contact Us Now!</a>
+        <p class="">Feel free to reach out and follow us on social media</p>
+        <div>
+          <a href=""><i class="fab fa-facebook-square icon"></i></a>
+          <a href=""><i class="fab fa-youtube-square icon"></i></a>
+          <a href=""><i class="fab fa-twitter-square icon"></i></a>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="w3-black">
+      <div class="w3-cell w3-right">
+        <a class="w3-button w3-large" href="#about">About</a>
+        <a class="w3-button w3-large" href="#features">Features</a>
+        <a class="w3-button w3-large" href="#reviews">Reviews</a>
+        <a class="w3-button w3-large" href="#">Tutorials</a>
+        <a class="w3-button w3-large" href="#contact">Contact</a>
+      </div>
+      <div class="w3-panel w3-center">
+        <p>
+          PoultryPally is optimized for poultry livestock farm management and training. 
+          Tutorials and references are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. 
+          While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy.
+          <br>Copyright 2023. All Rights Reserved.
+        </p>
+      </div>
+    </section>
+<script>
+  // Home page carousal manual scroll
+  var slideIndex = 1;
+  showDivs(slideIndex);
+
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    x[slideIndex-1].style.display = "block";  
+  }
+
+  // Home page carousal automatic scroll
+  carousel();
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000); 
+  }
+</script>
+{% endblock main %}

@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block main %}
+<div class="background1 w3-padding w3-padding-64" style="min-height: 100vh;">
+    <div class="center w3-round-large w3-padding w3-padding-32" id="auth_1">
+        <div >
+            <div class="w3-panel w3-center w3-xlarge w3-text-lime">Create New Batch</div>
+            <div class="w3-container">
+                <form action="{% url 'create-batch-url' %}" method="POST" style="width: 100%;">
+                    {% csrf_token %}
+    
+                    {{ b_form.as_p }}
+                    {{ l_form.as_p }}
+                
+                    <div class="w3-cell-row">
+                        <div class="w3-cell w3-center">
+                            <button type="submit" class="w3-button w3-orange w3-round-xlarge" style="width: 100px;">Create</button>
+                        </div>
+                        <div class="w3-cell w3-center">
+                            <a href="{% url 'batches-url' %}" class="w3-button w3-text-orange w3-border w3-border-orange w3-round-xlarge" style="width: 100px;">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock main %}
