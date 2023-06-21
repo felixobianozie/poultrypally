@@ -1,12 +1,16 @@
 ## PoultryPally 💡
-PoultryPally is a digital assistant with a complete set of tools for small & medium scale poultry farm management.
-It is a free digital product for the everyday farmer. The ✨magic✨ in this app is just incredible!
-It is strictly designed with simplicity in mind to help the next door farmer keep track of everything about his bird livestock.
-This product has the simplest learning curve and is your best choice.
-PoultryPally is constantly improving with more features being added on a regular basis.
+PoultryPally is a digital assistant with a complete set of tools for small & medium scale poultry farm management.   
+
+It is a free digital product for the everyday farmer. The ✨magic✨ in this app is just incredible!  
+
+It is strictly designed with simplicity in mind to help the next door farmer keep track of everything about his bird livestock.  
+
+This product has the simplest learning curve and is your best choice.  
+
+PoultryPally is constantly improving with more features being added on a regular basis.  
 
 ## The Inspiration 🌤️
-In my [(Felix Obianozie)](felixobianozie@gmail.com) demographic, there are more poultry farmers than there are of any other livestock. On the fateful day, my nextdoor neigbour who has a bird farm expressed some frustration over not getting the right tool to manage her farm. "...they either are just too complex and overpriced or too simple to fit my needs as a small/medium scale everyday farmer." Those were her exact words when I inquired about the already existing tools. I thought, "a Software Engineer is a problem solver right?" The thought led to something, which led to another, and here we are...</smiles>.
+In my [(Felix Obianozie)](felixobianozie@gmail.com) demographic, there are more poultry farmers than there are of any other livestock. On the fateful day, my nextdoor neigbour who has a bird farm expressed some frustration over not getting the right tool to manage her farm. "...they either are just too complex and overpriced or too simple to fit my needs as a small/medium scale everyday farmer." Those were her exact words when I inquired about the already existing tools. I thought, "a Software Engineer is a problem solver right?" That thought led to something, which led to another, and here we are with this spectacular product...</smiles>.
 
 **NB:** *PoultryPally is a miniature version of [**FarmPally**]() a larger, premium, full featured farm management tool by thesame author*
 
