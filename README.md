@@ -32,8 +32,12 @@ This product is also available to be cloned and executed locally. To achieve thi
 **NB**: *PoultryPally is currently Server Side Rendered (SSR), hence there is a little overlap of frontend and backend tech. That said, I will just list them all.*
 | Trademark | Description |
 | ------ | ------ |
-| [![](image here)]() | [Boostrap]() - great UI boilerplate and CSS framework for modern web apps |
-| [![](image here)]() | [Python]() - a topnotch language of the present and the future ideal for app developpment and analysis|
+| [![](https://i.imgur.com/4l6Eeh3.jpg)]() | [Python](https://www.python.org/) - a topnotch language of the present and the future ideal for app developpment and analysis 💕|
+| [![](https://i.imgur.com/Lpv3HnM.png)]() | [Django](https://www.djangoproject.com/) - high-level Python web framework that encourages rapid development and clean, pragmatic design|
+| [![](https://i.imgur.com/YqaIv6O.png)]() | [Javascript](https://www.javascript.com/) - one of the best things that happened in the world of programming languages...😉 |
+| [![](https://i.imgur.com/nek6z1Q.jpg)]() | [Tailwind](https://tailwindcss.com/) -  utility-first CSS framework for rapidly building modern websites without ever leaving your HTML |
+| [![](https://i.imgur.com/Mce5kDC.png)]() | [MySQL](https://www.mysql.com/) - open-source relational database management system |
+| [![](https://i.imgur.com/AByWAOv.png)]() | [Boostrap]() - great UI boilerplate and CSS framework for modern web apps |
 
 
 ## Models 🧱
