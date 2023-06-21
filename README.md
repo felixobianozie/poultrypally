@@ -26,7 +26,69 @@ This product is available for free public use at the following link: [PoultryPal
 **NB**: *In the event of a downtime or inaccessibility, please try again later.*
 
 ## Run Locally 🏃
-This product is also available to be cloned and executed locally. To achieve this you must follow the insallation guide. This will be made available soon...
+Want to install and run the app locally on your machine? Let's do it then!
+
+ **1.   Clone the project**
+ ```
+git clone <project_link>
+```  
+
+ **2.   Confirm that Python 3+ is installed on your machine.**
+  ```
+  python --version
+  ```  
+
+ **NB:** 
+ If Python is installed, you should see a message like “Python 3.x.x”. Note that “3.x.x” represents the version number of Python. Proceed to the next section (3).
+ 
+ If Python 3+ is not installed, install it using the following [GUIDE](https://www.tutorialsteacher.com/python/install-python). After installation, join me at the next section (3).
+
+ 
+ **3.   Setup a virtual environment**
+  **NB:** *On mac or ubuntu, change all "python" to "python3" and "pip" to "pip3" and you will be fine.*
+
+ **Install virtualenv** *(a tool for creating python virtual env with ease)*
+  ```
+  python -m pip install virtualenv
+  ```
+  **Create virtual environment**
+  ```
+  virtualenv venv
+  ``` 
+ 
+  Where "venv" is my preferred name for the virtual environment. You may change it to whatever fits for you.  
+  
+  **NB:** There are other ways of creating virtual environments in Python, checkout this [GUIDE](https://www.geeksforgeeks.org/create-virtual-environment-using-venv-python/)
+
+  **Activate the virtual environment**
+  ```
+  venv\scripts\activate
+  ```
+  
+  Where "venv" remains the name of your virtual machine as specified during the creation stage.
+  
+  If your got here successfully, then we are in for the sweeter stuff, getting the app to run!🥂
+  
+   **4. Install All App Dependencies**
+  ```
+  pip install -r requirements.txt
+  ```
+
+  **5. Perform Django Data Migration**
+   ```
+  python manage.py makemigrations
+  python manage.py migrate
+  ```
+  **NB:** This step performs all the needed connection and database setups between the application models, Django ORM and the database.
+  The open source version of this project is configured to SQL Lite by default, but runs MySQL in production. To switch to a different database, refer to this [GUIDE]()
+
+   **6. Start The App Server**
+   ```
+  python manage.py runserver
+  ```
+  **NB:** This runs the app on localhost:8080 by default.
+  
+  Get to your favourite browser, and enjoy the goodness of PoultryPally on: http://127.0.0.1:8000/. Am glad you made it😃! Enjoy!
 
 ## Tech 💻
 **NB**: *PoultryPally is currently Server Side Rendered (SSR), hence there is a little overlap of frontend and backend tech. That said, I will just list them all.*
