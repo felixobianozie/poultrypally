@@ -41,9 +41,12 @@ This product is also available to be cloned and executed locally. To achieve thi
 
 
 ## Models 🧱
-Below is a snapshot of the current model. Care for a pdf copy? Send a request to the lead developer here [felixobianozie@gmail.com]()
+Below is a snapshot of the current model. Care for a complete copy in a portable format? Shoot me a request @ [felixobianozie@gmail.com]()
 
-[![](image here)]()
+![image](https://i.imgur.com/Qak0Kw0.pngg)
+![image](https://i.imgur.com/Cyt4BRf.png)
+![image](https://i.imgur.com/LoFMjei.png)
+![image](https://i.imgur.com/0tCZS8I.png)
 
 ## Developers ✒️
 - [Felix Obianozie](felixobianozie@gmail.com) - Lead Developer (UI/UX Design, Frontend, Backend, Devops & Maintenance)
