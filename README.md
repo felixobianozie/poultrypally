@@ -115,7 +115,15 @@ git clone <project_link>
   sudo -H pip install -r requirements.txt
   ```
 
-  **5. Perform Django Data Migration**
+  **5. Setup Project Dependent Variables**
+  - Copy **"_migrations"** folder from **"/local"** to **"/base"**
+  - Rename **"_migrations"** folder in **"/base"** to **"migrations"** i.e removing the preceeding underscore
+  - Copy **"_.env"** file from **"/local"** to **"/poultry"** *(thesame folder that holds settings.py)*
+  - Rename **"_.env"** file in **"/poultry"** to **".env"** i.e removing the preceeding underscore
+
+  **NB:** At this point you may delete "/locals" if you wish. Leaving it causes no harm either.
+
+  **6. Perform Django Data Migration**
    ```
   python manage.py makemigrations
   python manage.py migrate
@@ -123,7 +131,7 @@ git clone <project_link>
   **NB:** This step performs all the needed connection and database setups between the application models, Django ORM and the database.
   The open source version of this project is configured to SQL Lite by default, but runs MySQL in production. To switch to a different database, refer to this [GUIDE]()
 
-   **6. Start The App Server**
+   **7. Start The App Server**
    ```
   python manage.py runserver
   ```
