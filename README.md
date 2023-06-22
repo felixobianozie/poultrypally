@@ -68,7 +68,7 @@ Want to install and run the app locally on your machine? Let's do it then!
 
  **1.   Clone the project**
  ```
-git clone <project_link>
+git clone https://github.com/felixobianozie/PoultryPally
 ```  
 
  **2.   Confirm that Python 3+ is installed on your machine.**
