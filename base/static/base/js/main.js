@@ -66,5 +66,3 @@ function hideDetails(){
         w3-round-large w3-animate-right w3-hide-small w3-hide-medium w3-hide-large";
     e.className = "w3-col m3 l3";
 }
-
-

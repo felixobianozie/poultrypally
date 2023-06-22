@@ -63,14 +63,15 @@ def login_user(request):
 
 def logout_user(request):
     """Controls user logout"""
-
+    
     logout(request)
+    messages.info(request, "You have been logged out!")
     return redirect('home-url')
 
 
 def home(request):
     """Renders the app's landing page"""
-
+    
     users_count = CustomUser.objects.count()
     context = {"users_count": users_count}
     return render(request, 'home.html', context)

@@ -1,0 +1,64 @@
+{% if messages %}
+
+    {% for message in messages %}
+    <div id="message">
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="w3-cell-row w3-red w3-border w3-animate-opacity">
+                <div class="w3-cell w3-cell-top w3-container">
+                    <div><strong>Error!</strong></div>
+                    {{ message }} 
+                </div>
+                <div class="w3-cell w3-cell-top">
+                    <div class="w3-dark-gray w3-opacity w3-hover-gray w3-center" onclick="document.getElementById('message').className='w3-hide'" style="padding: 2px;">
+                        <span><strong>&times;</strong></span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="w3-cell-row w3-green w3-border w3-animate-opacity">
+            <div class="w3-cell w3-cell-top w3-container">
+                <div><strong>Success!</strong></div>
+                {{ message }} 
+            </div>
+            <div class="w3-cell w3-cell-top">
+                <div class="w3-dark-gray w3-opacity w3-hover-gray w3-center" onclick="document.getElementById('message').className='w3-hide'" style="padding: 2px;">
+                    <span><strong>&times;</strong></span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <div class="w3-cell-row w3-yellow w3-border w3-animate-opacity">
+            <div class="w3-cell w3-cell-top w3-container">
+                <div><strong>Warning!</strong></div>
+                {{ message }} 
+            </div>
+            <div class="w3-cell w3-cell-top">
+                <div class="w3-dark-gray w3-opacity w3-hover-gray w3-center" onclick="document.getElementById('message').className='w3-hide'" style="padding: 2px;">
+                    <span><strong>&times;</strong></span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <div class="w3-cell-row w3-blue w3-border w3-animate-opacity">
+            <div class="w3-cell w3-cell-top w3-container">
+                <div><strong>Info!</strong></div>
+                {{ message }} 
+            </div>
+            <div class="w3-cell w3-cell-top">
+                <div class="w3-dark-gray w3-opacity w3-hover-gray w3-center" onclick="document.getElementById('message').className='w3-hide'" style="padding: 2px;">
+                    <span><strong>&times;</strong></span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endif %}
+
+        

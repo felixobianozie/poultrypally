@@ -71,6 +71,9 @@ def create_batch(request):
             nw_livestock.save()
             nw_batch.save()
 
+            tmp = f"Batch: {nw_batch.name}, was successfully created."
+            messages.success(request, tmp)
+
             return redirect('batches-url')
 
     b_form = BatchForm()

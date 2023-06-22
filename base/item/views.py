@@ -48,11 +48,17 @@ def create_item(request):
                 nw_item.batch = batch
                 nw_item.save()
                 nw_item.batch.update_cost()
+                # Notify success
+                tmp = f"Item: {nw_item.name}, successfuly created."
+                messages.success(request, tmp)
             return redirect(resolve_url('batch-url', pk=batch_id))
         else:
             # Create item to no batch i.e to store
             if i_form.is_valid():
-                i_form.save()
+                nw_item = i_form.save()
+            # Notify success
+            tmp = f"Item: {nw_item.name}, successfuly created."
+            messages.success(request, tmp)
             return redirect('store-url')
 
     i_form = ItemForm()

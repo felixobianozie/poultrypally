@@ -7,7 +7,6 @@
 {% endblock title %} 
 
 {% block main %}
-
 <div class="w3-dark-gray">
     <section class="background1" style="min-height: 100vh;">
         <nav class="w3-container w3-cell-row w3-card-4">
@@ -54,6 +53,9 @@
           <div><a class="w3-button w3-orange w3-round-large" href="{% url 'login-url' %}">Login</a></div>
           {% endif %}
         </div>
+
+        {% include "flash_message.html" %}
+
         <div class="w3-center w3-padding-64 center" >
           <div class="w3-xxxlarge center" style="max-width: 800px;">A digital assistant with a complete set of features for seamless poultry livestock keeping</div>
           <div class="w3-panel">
