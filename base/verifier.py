@@ -1,4 +1,7 @@
-"""Custom decorators and decoratory callback functions"""
+"""
+Custom functions, decorators & decoratory callback functions for verifications.
+They usually would return a boolean type.
+"""
 
 from django.contrib import messages
 from crequest.middleware import CrequestMiddleware

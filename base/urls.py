@@ -3,7 +3,8 @@ from django.urls import path
 from base.user.views import signup_user, login_user, logout_user, home
 from base.batch.views import batches, batch, create_batch, update_batch,\
     delete_batch, mortality, create_mortality, update_mortality, delete_mortality
-from base.item.views import store_items, create_item, update_item, delete_item, forward_item
+from base.item.views import store_items, create_item, update_item,\
+    delete_item, forward_item, return_item
 from base.sale.views import sale, make_sale, update_sale, delete_sale
 
 urlpatterns = [

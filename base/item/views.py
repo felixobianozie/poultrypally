@@ -117,7 +117,7 @@ def delete_item(request, pk=None):
 
 @login_required(login_url='login-url')
 def forward_item(request, pk=None):
-    """Forwards item from store to a named batch"""
+    """Forwards item from store to a given batch"""
     if request.method == "POST":
         if pk:
             item = Item.objects.get(id=pk)
@@ -178,3 +178,4 @@ def forward_item(request, pk=None):
             messages.success(request, tmp)
             del tmp
             return redirect("store-url")
+
