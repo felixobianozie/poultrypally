@@ -81,7 +81,7 @@ git clone https://github.com/felixobianozie/PoultryPally
  
  If Python 3+ is not installed, install it using the following [GUIDE](https://www.tutorialsteacher.com/python/install-python). After installation, join me at the next section (3).
 
- **3.   Setup a virtual environment**
+ **3.   Setup a virtual environment**   
   **NB:** *On mac or ubuntu, change all "python" to "python3" and "pip" to "pip3" and you will be fine.*
 
  **Install virtualenv** *(a tool for creating python virtual env with ease)*
@@ -97,7 +97,7 @@ git clone https://github.com/felixobianozie/PoultryPally
   
   **NB:** There are other ways of creating virtual environments in Python, checkout this [GUIDE](https://www.geeksforgeeks.org/create-virtual-environment-using-venv-python/)
 
-  **Activate the virtual environment**
+  **Activate the virtual environment**   
   Windows:
   ```
   venv\scripts\activate
