@@ -113,9 +113,9 @@ def delete_item(request, pk=None):
                 batch.update_cost()
                 return redirect(resolve_url('batch-url', pk=batch.id))
             return redirect('store-url')
-        
         messages.error(request, "Sorry, item does not exist!")
         return redirect("home-url")
+    
     return HttpResponseNotAllowed('This endpoint allows only post requests!')
 
 @login_required(login_url='login-url')

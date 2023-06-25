@@ -15,7 +15,7 @@ PoultryPally is constantly improving with more features being added on a regular
 
 
 ## The Inspiration 🌤️
-In my [(Felix Obianozie)](felixobianozie@gmail.com) demographic, there are more poultry farmers than there are of any other livestock. On the fateful day, my nextdoor neigbour who has a bird farm expressed some frustration over not getting the right tool to manage her farm. "...they either are just too complex and overpriced or too simple to fit my needs as a small/medium scale everyday farmer." Those were her exact words when I inquired about the already existing tools. I thought, "a Software Engineer is a problem solver right?" That thought led to something, which led to another, and here we are with this spectacular product...</smiles>.
+In my demographic, there are more poultry farmers than there are of any other livestock. On the fateful day, my nextdoor neigbour who has a bird farm expressed some frustration over not getting the right tool to manage her farm. "...they either are just too complex and overpriced or too simple to fit my needs as a small/medium scale everyday farmer." Those were her exact words when I inquired about the already existing tools. I thought, "a Software Engineer is a problem solver right?" That thought led to something, which led to another, and here we are with this spectacular product...</smiles>.
 
 **NB:** *PoultryPally is a miniature version of [**FarmPally**]() a larger, premium, full featured farm management tool by thesame author*
 
@@ -58,7 +58,7 @@ Below is a snapshot of the current model. Care for a complete copy in a portable
 
 
 ## Production 🚀
-This product is available for free public use at the following link: [PoultryPally App Link]()
+This product is available for free public use at the following link: [PoultryPally App Link]()   
 **NB**: *In the event of a downtime or inaccessibility, please try again later.*
 
 
