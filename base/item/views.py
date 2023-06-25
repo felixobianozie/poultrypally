@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, resolve_url
 from django.http import HttpResponseBadRequest, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 from base.models import Batch
 from base.item.forms import *
@@ -146,7 +147,6 @@ def forward_item(request, pk=None):
             # Check that quatity available in store is sufficient
             tmp = request.POST.get('qty','')
             if not tmp:
-                qty = int(tmp)
                 messages.error(request, 'Quantity field is required!')
                 return  redirect('store-url')
             qty = int(tmp)
@@ -179,3 +179,130 @@ def forward_item(request, pk=None):
             del tmp
             return redirect("store-url")
 
+
+@login_required(login_url="login-url")
+def return_item(request, pk=None):
+    """Returns item from a given batch to the store"""
+
+    if request.method == "POST":
+        if pk:
+            item = Item.objects.get(id=pk)
+
+        select = request.POST.get('select', "")        
+        
+        # Find item parent in store
+        try:
+            store_item = Item.objects.get(created_from=item)
+        except ObjectDoesNotExist:
+            store_item = None
+
+        # Check quantity
+        def check_quantity():
+            tmp = request.POST.get('qty', '')
+            if not tmp:
+                messages.error(request, 'Quantity field is required!')
+                return  redirect(resolve_url('batch-url', item.batch.id))
+            qty = int(tmp)
+            del tmp
+            if item.qty < qty:
+                messages.error(request, 'Choice quantity is beyond what is available in item!')
+                return  redirect(resolve_url('batch-url', item.batch.id))
+            if item.qty == qty:
+                batch_id = select_is_all()
+                return  redirect(resolve_url('batch-url', batch_id))
+            return qty
+
+        # Item parent is in store
+        if store_item:
+            # Returns item when select == "all"
+            def select_is_all():
+                # Price & quantity reconciliation
+                store_item.price += item.price
+                store_item.qty += item.qty
+                tmp = item.batch
+                item_batch_id = item.batch.id
+                item.delete()
+                # Save store item
+                store_item.save()
+                # Update cost of batch associated with item
+                tmp.update_cost()
+                tmp = f'Item:{item.name} has been returned to store.'
+                messages.success(request, tmp)
+                del tmp
+                return item_batch_id
+
+            if select == "all":
+                batch_id = select_is_all()
+                return  redirect(resolve_url('batch-url', batch_id))
+            
+            if select == "some":
+                # Check that quatity selected is not more than item.qty
+                qty = check_quantity()
+                
+                # Price reconciliation
+                tmp = round((item.price / item.qty)) * qty
+                item.price -= tmp
+                store_item.price += tmp
+                del tmp
+
+                # Quantity reconciliation
+                item.qty -= qty
+                store_item.qty += qty
+
+                # Other reconciliations
+                item.batch.update_cost()
+                item.save()
+                store_item.save()
+
+                tmp = "Successfully returned Item: " + item.name + " to store"
+                messages.success(request, tmp)
+                del tmp
+                return redirect(resolve_url("batch-url", item.batch.id))
+
+        # Item parent is not in store      
+        # Returns item to store when select == "all"
+        def select_is_all():
+            # Remove batch_item relationship
+            tmp = item.batch
+            item_batch_id = tmp.id
+            item.batch = None
+            # Save as store item
+            item.save()
+            # Update cost of batch associated with item
+            tmp.update_cost()
+            tmp = f'Item:{item.name} has been returned to store.'
+            messages.success(request, tmp)
+            del tmp
+            return item_batch_id
+
+        if select == "all":
+            batch_id = select_is_all()
+            return redirect(resolve_url('batch-url', batch_id))
+
+        if select == "some":
+            # Create a new item in store
+            nw_item = Item(name=item.name, description=item.description, measure=item.measure, packaging=item.packaging)
+            
+            # Check that quatity selected is not more than item.qty
+            qty = check_quantity()
+
+            # Price reconciliation
+            tmp = round((item.price / item.qty)) * qty
+            item.price -= tmp
+            nw_item.price = tmp
+            del tmp
+
+            # Quantity reconciliation
+            item.qty -= qty
+            nw_item.qty = qty
+
+            # Other reconciliations
+            nw_item.created_from = item
+            item.batch.update_cost()
+            item.save()
+            nw_item.save()
+
+            tmp = "Successfully returned Item: " + item.name + " to store"
+            messages.success(request, tmp)
+            del tmp
+            return redirect("store-url")

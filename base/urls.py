@@ -25,6 +25,7 @@ urlpatterns = [
     path('update-item/<str:pk>/', update_item, name='update-item-url'),
     path('delete-item/<str:pk>/', delete_item, name='delete-item-url'),
     path('forwared-item/<str:pk>/', forward_item, name='forward-item-url'),
+    path('return-item/<str:pk>/', return_item, name='return-item-url'),
 
     path('sales/', sale, name='sales-url'),
     path('make-sale/', make_sale, name='make-sale-url'),

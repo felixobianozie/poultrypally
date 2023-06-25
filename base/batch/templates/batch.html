@@ -77,10 +77,13 @@
                                             <div class="w3-cell"><a href="#" class="fas fa-eye icon2">v</a></div>
                                             <div class="w3-cell"><a href="{% url 'update-item-url' item.id %}" class="fa fa-pencil-square-o icon2">e</a></div>
                                             <div class="w3-cell"><a href="#" onclick="document.getElementById('{{ item.id }}').style.display='block'" class="fas fa-trash-alt icon2">d</a></div>
+                                            <div class="w3-cell"><a href="#" onclick="document.getElementById('div'+'{{ item.id }}').style.display='block'" class="fa fa-mail-reply icon2">r</a></div>
                                             <!-- Delete Prompter Start-->
                                             {% include 'item_delete_modal.html' %}
                                             <!-- Delete Prompter Finish-->
-                                            <div class="w3-cell"><a href="#" class="fas fa-reply icon2">f</a></div>
+                                            <!-- Return Prompter Start-->
+                                            {% include 'return_to_store_modal.html' %}
+                                            <!-- Return Prompter Finish-->
                                         </div>
                                     </div>
                                 </div>
@@ -96,4 +99,15 @@
 
     </div>
     </div>
+
+<script>
+    // return modal control
+    function isChecked(qtyDiv, idAll, idFew){
+        if(document.getElementById(idAll).checked) {
+            document.getElementById(qtyDiv).className="w3-hide";
+        }else if(document.getElementById(idFew).checked){
+            document.getElementById(qtyDiv).className="w3-show";
+        }
+    }
+</script>
 {% endblock main %}
