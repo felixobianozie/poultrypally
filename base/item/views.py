@@ -305,4 +305,4 @@ def return_item(request, pk=None):
             tmp = "Successfully returned Item: " + item.name + " to store"
             messages.success(request, tmp)
             del tmp
-            return redirect("store-url")
+            return redirect(resolve_url('batch-url', batch_id))
