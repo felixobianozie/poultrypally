@@ -153,6 +153,7 @@ def forward_item(request, pk=None):
             del tmp
             if item.qty < qty:
                 messages.error(request, 'Store has insufficient quantity of your choice item!')
+                return  redirect('store-url')
             if item.qty == qty:
                 select_is_all()
                 return redirect("store-url")
