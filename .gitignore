@@ -7,3 +7,4 @@ __pycache__
 *.env
 */static/base/pix
 venv
+.DS_Store
