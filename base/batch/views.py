@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
-from django.http import HttpResponseNotAllowed, HttpResponseBadRequest
+from django.http import HttpResponseNotAllowed, HttpResponseBadRequest, HttpResponseForbidden
 
 from base.batch.forms import *
 from base.verifier import user_owns_resource
@@ -115,11 +115,12 @@ def delete_batch(request, pk=None):
         if batch:
             # Check that user is resource owner
             if not user_owns_resource(request, batch):
-                return HttpResponseNotAllowed('You are not permitted to access this resource!')
+                return HttpResponseForbidden('You are not permitted to access this resource!')
             batch.delete()
+            return redirect('batches-url')
         messages.error(request, "Sorry, batch does not exist!")
         return redirect('batches-url')
-    return HttpResponseBadRequest('This endpoint allows only post requests!')
+    return HttpResponseNotAllowed('This endpoint allows only post requests!')
 
 @login_required(login_url='login-url')
 def mortality(request):
