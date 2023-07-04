@@ -116,7 +116,10 @@ def delete_batch(request, pk=None):
             # Check that user is resource owner
             if not user_owns_resource(request, batch):
                 return HttpResponseForbidden('You are not permitted to access this resource!')
+            tmp = batch.name
             batch.delete()
+            tmp2 = f"Successfully deleted batch: {tmp}"
+            messages.info(request, tmp2)
             return redirect('batches-url')
         messages.error(request, "Sorry, batch does not exist!")
         return redirect('batches-url')
